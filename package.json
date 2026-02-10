@@ -1,0 +1,21 @@
+{
+  "name": "giftcards",
+  "version": "1.0.0",
+  "main": "ddb.js",
+  "scripts": {
+    "map": "node jobs/processAllMalls.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.986.0",
+    "@aws-sdk/lib-dynamodb": "^3.986.0",
+    "dotenv": "^17.2.4"
+  },
+  "devDependencies": {
+    "serverless": "^4.31.2",
+    "serverless-offline": "^14.4.0"
+  }
+}

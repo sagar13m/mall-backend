@@ -1,0 +1,32 @@
+service: giftcards-mall-mapping
+
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: ${opt:region, env:AWS_REGION, "us-east-1"}
+  stage: ${opt:stage, "dev"}
+  environment:
+    DDB_TABLE: ${env:DDB_TABLE, "OfflineBrandMapping"}
+    AWS_REGION: ${self:provider.region}
+
+plugins:
+  - serverless-offline
+
+functions:
+  listMalls:
+    handler: src/handlers/malls.list
+    events:
+      - http:
+          path: api/malls
+          method: get
+          cors: true
+
+  getMall:
+    handler: src/handlers/malls.get
+    events:
+      - http:
+          path: api/malls/{mallKey}
+          method: get
+          cors: true
